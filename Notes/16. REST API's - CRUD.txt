@@ -1,0 +1,40 @@
+1. API ( Application Programming Interface) : 
+an api is a piece of code that is exposing some internal business functionality to the outside world so that they can use it.
+
+2. REST (Representational State Transfer) :
+It is a set of recommendation to prepare modern web api's.
+
+It defines kind of like a style guide to make api's (like free ka advise).
+
+If we follow Rest API convention then :-
+
+	• a) our apis become more consistent, readable, standard that a lot of developers use.
+
+	• b) it provides independent implementation. It is more oriented towards design of API.
+
+	• Like REST we have certain other recommendations SOAP , grpc.
+
+	• c) REST is most widely accepted
+
+	• d)frameworks like ( Rails ,Django etc ) heavily tied with rest.
+
+	• e) easy to get started with.
+
+# Principles of Rest
+	• All the api's are designed around resource.
+	• Here resource means any kind of object, data, service or real life entity that can access.
+	• Your routes should be based on resource like : /products /customers /orders/2 /categories
+	• If you want to send and receive data use json format for it.
+	• json means java-script object notation, It is just a data format. like .txt
+	
+	3. If you want to send data from client to server then, there are 3 ways
+	• Query Params - key : value pairs separated by &. Usually used for filtering.
+	• URL Params - (PATH Params) products/23 , todo/21 , todo/4
+	• Body Params - 
+
+	4. REST suggest for any resource we can make CRUD Apis.
+	
+Fun Fact : Browser understand html in order to render the stuffs, html forms only supports get and post methods for networks calls.
+If we want put, patch, delete it is done by javascript in the browser.
+
+https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design
