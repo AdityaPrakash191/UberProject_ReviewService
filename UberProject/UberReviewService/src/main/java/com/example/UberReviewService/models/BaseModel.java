@@ -12,7 +12,7 @@ import java.util.Date;
 public class BaseModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long id;
 
     @Column(nullable = false)

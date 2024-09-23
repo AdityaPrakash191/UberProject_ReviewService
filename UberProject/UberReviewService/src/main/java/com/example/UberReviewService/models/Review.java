@@ -8,13 +8,13 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "bookingreview")
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "booking_review")
 public class Review extends BaseModel {
 
 
