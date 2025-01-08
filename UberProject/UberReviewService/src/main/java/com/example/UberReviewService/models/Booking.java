@@ -6,10 +6,10 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@Getter
 @Setter
 @Builder
 @NoArgsConstructor
+@Getter
 @AllArgsConstructor
 public class Booking extends BaseModel {
 
@@ -26,4 +26,10 @@ public class Booking extends BaseModel {
     private Date EndDate;
 
     private Long TotalDistanceTravelled;
+
+    @ManyToOne
+    private Driver driver;
+
+    @ManyToOne
+    private Passenger passenger;
 }
