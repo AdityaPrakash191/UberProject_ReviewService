@@ -15,13 +15,17 @@ import java.util.Date;
 @AllArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "booking_review")
+
 public class Review extends BaseModel {
 
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private Booking booking;
 
     @Column(nullable = false)
     private String content;
 
-    private double rating;
+    private Double rating;
 
     @Override
     public String toString(){
