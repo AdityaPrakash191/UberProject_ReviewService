@@ -1,5 +1,6 @@
 package com.example.UberReviewService.controllers;
 
+import com.example.UberReviewService.adapters.CreateReviewDtoToReviewAdapter;
 import com.example.UberReviewService.adapters.CreateReviewDtoToReviewAdapterImpl;
 import com.example.UberReviewService.dtos.CreateReviewDto;
 import com.example.UberReviewService.models.Review;
@@ -15,9 +16,9 @@ import java.util.Optional;
 @RequestMapping("/api/v1/reviews")
 public class ReviewController {
     private ReviewService reviewService;
-    private CreateReviewDtoToReviewAdapterImpl createReviewDtoToReviewAdapter;
+    private CreateReviewDtoToReviewAdapter createReviewDtoToReviewAdapter;
 
-    public ReviewController(ReviewService reviewService , CreateReviewDtoToReviewAdapterImpl createReviewDtoToReviewAdapter){
+    public ReviewController(ReviewService reviewService , CreateReviewDtoToReviewAdapter createReviewDtoToReviewAdapter){
         this.reviewService = reviewService;
         this.createReviewDtoToReviewAdapter = createReviewDtoToReviewAdapter;
     }
@@ -29,6 +30,7 @@ public class ReviewController {
             return new ResponseEntity<>("Invalid Arguments", HttpStatus.BAD_REQUEST);
         }
         Review review = this.reviewService.publishReview(incomingReview);
+
         return new ResponseEntity<>(review, HttpStatus.CREATED);
     }
 
@@ -42,7 +44,11 @@ public class ReviewController {
     public ResponseEntity<?> findReviewById(@PathVariable Long reviewId) {
         try {
             Optional<Review> review = this.reviewService.findReviewById(reviewId);
-            return new ResponseEntity<>(review, HttpStatus.OK);
+            if(review.isPresent()){
+                return new ResponseEntity<>(review, HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>("Review not found", HttpStatus.NOT_FOUND);
+            }
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
